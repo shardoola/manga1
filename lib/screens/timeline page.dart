@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 import 'package:manga/screens/ActivityFeed.dart';
 import 'package:manga/screens/feed.dart';
 import 'package:manga/screens/search.dart';
@@ -8,18 +9,16 @@ import 'package:manga/screens/upload.dart';
 import 'forum.dart';
 
 class timeline extends StatefulWidget {
-  final String uid;
 
-  timeline({Key key, @required this.uid}) : super(key: key);
   @override
-  _timelineState createState() => _timelineState(uid);
+  _timelineState createState() => _timelineState();
 }
 
 class _timelineState extends State<timeline> {
   PageController pageController;
   int pageIndex = 0;
-  final String uid;
-  _timelineState(this.uid);
+
+
 
 
 
@@ -46,7 +45,7 @@ class _timelineState extends State<timeline> {
         backgroundColor: Colors.black.withOpacity(0.9),
         body: PageView(
         children: [
-          feed(),
+         feed(),
         Search(),
         upload(),
           forum(),
@@ -80,5 +79,10 @@ class _timelineState extends State<timeline> {
 
     );
   }
+
+  Future<void> logout()async {
+    final googleSignIn = GoogleSignIn();
+    await googleSignIn.signOut();
   }
+}
 

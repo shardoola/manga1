@@ -5,10 +5,12 @@ import 'package:manga/screens/chat.dart';
 import 'package:manga/screens/profile.dart';
 
 AppBar header(BuildContext context, {
-  bool isAppTitle = false, String titleText
+  bool isAppTitle = false, String titleText,removeBackButton = false
 }) {
   return AppBar(
+    automaticallyImplyLeading: removeBackButton ? false : true,
     title: Text(
+
       isAppTitle ? "weebNet": titleText,
       style: TextStyle(
         color: Colors.white,

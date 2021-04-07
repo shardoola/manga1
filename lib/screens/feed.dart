@@ -19,43 +19,6 @@ class feed extends StatefulWidget {
 
 class _feedState extends State<feed> {
 
-  @override
-  void initState() {
-    updateUser();
-    //createUser();
-
-    // TODO: implement initState
-    super.initState();
-  }
-
-  createUser() async{
-   await  userRef.doc("asadsadad").set({
-
-    "username" : "rcb",
-      "postcount" : 0,
-      "isAdmin" : false
-    });
-
-  }
-
- updateUser() async {
- final DocumentSnapshot shar =   await userRef.doc("asadsadad").get();
- if(shar.exists){
-   shar.reference.update({"username": "csk", "postcount": 0, "isAdmin": false});
- }
-
-
-
-    }
-
-
-
-        //.update({"username": "John", "postcount": 0, "isAdmin": false});
-
-
-
-
-
 
 
   @override
@@ -63,20 +26,9 @@ class _feedState extends State<feed> {
     return Scaffold(
         backgroundColor: Colors.white.withOpacity(0.9),
         appBar: header(context, isAppTitle: true),
-        body:  StreamBuilder<QuerySnapshot>(
-            stream: userRef.snapshots(),
-            builder: (context, snapshot) {
-              if (!snapshot.hasData) {
-                return CircularProgressIndicator();
-              }
-              final List<Text> children = snapshot.data.docs.map((doc) =>
-                  Text(doc['username'])).toList();
-              return Container(
-                child: ListView(
-                  children: children,
-                ),
-              );
-            }));
+      body: Text("hello"),
+    );
   }
-}
+  }
+
 

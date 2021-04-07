@@ -6,7 +6,9 @@ INJECTED from C:\ff\manga\android\app\src\main\AndroidManifest.xml:1:1-41:12
 INJECTED from C:\ff\manga\android\app\src\main\AndroidManifest.xml:1:1-41:12
 MERGED from C:\ff\manga\android\app\src\main\AndroidManifest.xml:1:1-41:12
 MERGED from [:firebase_auth] C:\ff\manga\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:sqflite] C:\ff\manga\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:cloud_firestore] C:\ff\manga\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
+MERGED from [:path_provider] C:\ff\manga\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-7:12
 MERGED from [:google_sign_in] C:\ff\manga\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-9:12
 MERGED from [:firebase_core] C:\ff\manga\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:2:1-15:12
 MERGED from [com.google.firebase:firebase-auth:20.0.3] C:\Users\shard\.gradle\caches\transforms-2\files-2.1\6da3909492249b8f37b8f705563b784f\jetified-firebase-auth-20.0.3\AndroidManifest.xml:17:1-83:12
@@ -139,8 +141,12 @@ INJECTED from C:\ff\manga\android\app\src\main\AndroidManifest.xml
 INJECTED from C:\ff\manga\android\app\src\main\AndroidManifest.xml
 MERGED from [:firebase_auth] C:\ff\manga\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_auth] C:\ff\manga\build\firebase_auth\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] C:\ff\manga\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:sqflite] C:\ff\manga\build\sqflite\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] C:\ff\manga\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:cloud_firestore] C:\ff\manga\build\cloud_firestore\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] C:\ff\manga\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
+MERGED from [:path_provider] C:\ff\manga\build\path_provider\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_sign_in] C:\ff\manga\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:google_sign_in] C:\ff\manga\build\google_sign_in\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44
 MERGED from [:firebase_core] C:\ff\manga\build\firebase_core\intermediates\library_manifest\debug\AndroidManifest.xml:5:5-44

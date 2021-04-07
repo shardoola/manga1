@@ -24,6 +24,8 @@ dependencies:
 
 
   font_awesome_flutter: ^9.0.0
+  cached_network_image: ^3.0.0
+  flutter_svg: ^0.21.0+1
   provider: ^5.0.0
   google_sign_in: ^5.0.1
   sign_button: ^1.0.2
@@ -54,7 +56,7 @@ flutter:
   uses-material-design: true
 
   assets:
-    - images/Logo.png
+     - assets/images/search.svg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

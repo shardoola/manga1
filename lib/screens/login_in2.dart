@@ -1,11 +1,20 @@
+
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'package:manga/model/userrr.dart';
+import 'package:manga/screens/createaccount.dart';
 import 'package:manga/screens/timeline%20page.dart';
 import 'package:sign_button/create_button.dart';
 import 'package:sign_button/sign_button.dart';
+
+final userRef = FirebaseFirestore.instance.collection("users");
+final DateTime timestamp = DateTime.now();
+userr CurrentUserr;
 
 class SignInshar extends StatefulWidget {
   @override
@@ -149,11 +158,12 @@ class _SignInsharState extends State<SignInshar> {
                   child: SignInButton.mini(
                 buttonType: ButtonType.google,
                 onPressed: () => signInWithGoogle().whenComplete(() async {
+                  createUserFirestore();
                   User user = await _auth.currentUser;
                   final uid = user.uid;
 
-                  Navigator.of(context).pushReplacement(MaterialPageRoute(
-                      builder: (context) => timeline(uid: uid)));
+                // Navigator.of(context).pushReplacement(MaterialPageRoute(
+                 //    builder: (context) => timeline(uid: uid)));
                 }),
               )),
               SizedBox(
@@ -207,4 +217,36 @@ class _SignInsharState extends State<SignInshar> {
       );
     }
   }
+
+   createUserFirestore() async{
+     User user = await _auth.currentUser;
+      final uid = user.uid;
+     DocumentSnapshot shard =  await userRef.doc(user.uid).get();
+
+    if(!shard.exists){
+     final username = await  Navigator.push(context,MaterialPageRoute(builder: (context) => createaccount()));
+userRef.doc(user.uid).set({
+  "id" : user.uid,
+  "username": username,
+  "photoUrl": user.photoURL,
+  "email": user.email,
+  "displayName": user.displayName,
+  "bio": "",
+  "timestamp": timestamp
+
+});
+     Navigator.pushReplacement(context, MaterialPageRoute(
+         builder: (context) => timeline()));
+
+     shard =  await userRef.doc(user.uid).get();
+
+    }
+
+     CurrentUserr = userr.fromDocument(shard);
+    print(CurrentUserr);
+     print(CurrentUserr.username);
+
+     Navigator.pushReplacement(context, MaterialPageRoute(
+         builder: (context) => timeline()));
+   }
 }

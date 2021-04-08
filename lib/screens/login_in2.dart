@@ -159,8 +159,7 @@ class _SignInsharState extends State<SignInshar> {
                 buttonType: ButtonType.google,
                 onPressed: () => signInWithGoogle().whenComplete(() async {
                   createUserFirestore();
-                  User user = await _auth.currentUser;
-                  final uid = user.uid;
+
 
                 // Navigator.of(context).pushReplacement(MaterialPageRoute(
                  //    builder: (context) => timeline(uid: uid)));
@@ -235,8 +234,7 @@ userRef.doc(user.uid).set({
   "timestamp": timestamp
 
 });
-     Navigator.pushReplacement(context, MaterialPageRoute(
-         builder: (context) => timeline()));
+
 
      shard =  await userRef.doc(user.uid).get();
 

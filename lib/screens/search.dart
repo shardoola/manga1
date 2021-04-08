@@ -1,12 +1,14 @@
 
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:manga/model/userrr.dart';
 import 'package:manga/screens/feed.dart';
+import 'package:manga/screens/login_in2.dart';
 
-
+final userRef = FirebaseFirestore.instance.collection("users");
 class Search extends StatefulWidget {
 
   @override
@@ -16,6 +18,26 @@ class Search extends StatefulWidget {
 class _SearchState extends State<Search> {
   Future<QuerySnapshot> searchResultsFuture;
   TextEditingController searchController = TextEditingController();
+
+  buildSearchResults() {
+    return FutureBuilder(
+        future: searchResultsFuture,
+        builder: (context, snapshot) {
+          if (!snapshot.hasData) {
+            return CircularProgressIndicator();
+          }
+          List<UserResult> searchResults = [];
+          snapshot.data.docs.forEach((doc) {
+
+            userr user2 = userr.fromDocument(doc);
+            UserResult searchResult = UserResult(user2);
+            searchResults.add(searchResult);
+          });
+          return ListView(
+            children: searchResults,
+          );
+        });
+  }
 
   clearSearch(){
 
@@ -51,7 +73,7 @@ class _SearchState extends State<Search> {
       child: Center(
         child: ListView(
           shrinkWrap: true,
-          children: <Widget>[
+          children: [
             SvgPicture.asset(
               'assets/images/search.svg',
               height: orientation == Orientation.portrait ? 300.0 : 150.0,
@@ -84,33 +106,17 @@ class _SearchState extends State<Search> {
 
   }
 
-   handleSearch(String query) async{
+  handleSearch(String query) {
      Future<QuerySnapshot> users =   userRef.where("displayName" , isGreaterThanOrEqualTo: query)
     .get();
-setState(() async {
+setState(()  {
+
   searchResultsFuture =  users;
 
 });
 
   }
-  buildSearchResults() {
-    return FutureBuilder(
-        future: searchResultsFuture,
-        builder: (context, snapshot) {
-          if (!snapshot.hasData) {
-            return CircularProgressIndicator();
-          }
-          List<UserResult> searchResults = [];
-          snapshot.data.docs.forEach((doc) {
-            userr user = userr.fromDocument(doc);
-            UserResult searchResult = UserResult(user);
-            searchResults.add(searchResult);
-          });
-          return ListView(
-            children: searchResults,
-          );
-        });
-  }
+
 
 }
 
@@ -129,17 +135,17 @@ class UserResult extends StatelessWidget {
             onTap: () => print("tapped"),
             child: ListTile(
               leading: CircleAvatar(
-                backgroundColor: Colors.grey,
+                backgroundColor: Colors.black,
                 backgroundImage: CachedNetworkImageProvider(user.photoUrl),
               ),
               title: Text(
                 user.displayName,
                 style:
-                TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+                TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
               ),
               subtitle: Text(
                 user.username,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.black),
               ),
             ),
           ),
